@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Ad Banner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .ad-banner-modal {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px; 
+            height: 60px; 
+            padding: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+        .ad-banner-modal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .modal-content {
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        header nav li {
+            margin-right: 20px;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .hero {
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1e488b;
+        }
+        .hero h1 {
+            font-size: 48px;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product-grid li {
+            margin: 20px;
+            width: 200px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .product-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .product-grid h3 {
+            font-size: 18px;
+            margin-top: 0;
+        }
+        .product-grid p {
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Cart (0)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Test #4</h1>
+        <p>Explore our collection of premium products</p>
+        <button>Shop Now</button>
+    </section>
+    <section class="product-grid">
+        <h2>Featured Products</h2>
+        <ul>
+            <li>
+                <img src="download.png" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$19.99</p>
+                <button>Add to Cart</button>
+            </li>
+            <li>
+                <img src="download.png" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$29.99</p>
+                <button>Add to Cart</button>
+            </li>
+            <li>
+                <img src="download.png" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$39.99</p>
+                <button>Add to Cart</button>
+            </li>
+        </ul>
+    </section>
+    <div class="ad-banner-modal" id="ad-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <img src="BOMBAY FRESH FISH.png" alt="Ad Image" width="728" height="90">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; TJ009_OP. All rights reserved.</p>
+    </footer>
+    <script>
+        // Override the geolocation methods to block location access
+        navigator.geolocation.getCurrentPosition = function(success, error, options) {
+            error({
+                code: 1,
+                message: 'Geolocation access denied.'
+            });
+        };
+
+        navigator.geolocation.watchPosition = function(success, error, options) {
+            error({
+                code: 1,
+                message: 'Geolocation access denied.'
+            });
+        };
+
+        // Show modal ad banner on page load
+        window.onload = function() {
+            document.getElementById("ad-modal").style.display = "block";
+        };
+
+        // Close modal ad banner on click
+        document.addEventListener("DOMContentLoaded", function() {
+            const closeModal = document.getElementById("ad-modal");
+            closeModal.addEventListener("click", function() {
+                // Redirect to server-side proxy to hide IP address
+                window.location.href = "/proxy";
+            });
+        });
+    </script>
+</body>
+</html>
